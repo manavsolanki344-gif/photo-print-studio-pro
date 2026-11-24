@@ -1,3 +1,6 @@
+
+https://manavsolanki344-gif.github.io/photo-print-studio-pro/
+
 # 📸 Photo Print Studio Pro
 
 A professional, production-ready web application for local colour-printing and photo-printing shops. Create passport-size photographs, crop Aadhaar / ID cards, and generate high-quality print-ready sheets — all running **100% inside your browser**.
