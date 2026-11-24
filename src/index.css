@@ -1,0 +1,327 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Archivo", ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+
+  --color-ink: #0f1b2d;
+  --color-body: #46536a;
+  --color-muted: #66738a;
+  --color-line: #e3e7ed;
+  --color-line2: #eef1f5;
+  --color-canvas: #f4f5f7;
+  --color-brand: #1d5ae6;
+  --color-brand-dark: #1746b8;
+  --color-wash: #eef3ff;
+  --color-amber: #e0862a;
+  --color-danger: #c8442e;
+  --color-ok: #1a7f5a;
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    margin: 0;
+    background: var(--color-canvas);
+    color: var(--color-body);
+    font-family: var(--font-sans);
+    font-size: 13px;
+    line-height: 1.45;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow: hidden;
+  }
+  input,
+  select,
+  textarea,
+  button {
+    font: inherit;
+    color: inherit;
+  }
+  button {
+    cursor: pointer;
+  }
+  ::selection {
+    background: #d7e3ff;
+    color: var(--color-ink);
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #c6cdd9 transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: #c6cdd9;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+@layer components {
+  .label {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.085em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+  .num {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid var(--color-line);
+    border-radius: 14px;
+    box-shadow:
+      0 1px 2px rgba(15, 27, 45, 0.04),
+      0 8px 24px rgba(15, 27, 45, 0.045);
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    height: 32px;
+    padding: 0 13px;
+    border-radius: 9px;
+    font-size: 12.5px;
+    font-weight: 600;
+    border: 1px solid var(--color-line);
+    background: #fff;
+    color: var(--color-ink);
+    transition:
+      background 0.13s ease-out,
+      border-color 0.13s ease-out,
+      color 0.13s ease-out,
+      transform 0.1s ease-out;
+    white-space: nowrap;
+  }
+  .btn:hover {
+    background: #f7f9fc;
+    border-color: #d3d9e3;
+  }
+  .btn:active {
+    transform: translateY(1px);
+  }
+  .btn:disabled {
+    opacity: 0.42;
+    pointer-events: none;
+  }
+  .btn-primary {
+    background: var(--color-brand);
+    border-color: var(--color-brand);
+    color: #fff;
+    box-shadow: 0 1px 2px rgba(29, 90, 230, 0.35);
+  }
+  .btn-primary:hover {
+    background: var(--color-brand-dark);
+    border-color: var(--color-brand-dark);
+  }
+  .btn-ghost {
+    background: transparent;
+    border-color: transparent;
+    color: var(--color-body);
+  }
+  .btn-ghost:hover {
+    background: #eef1f6;
+    border-color: transparent;
+    color: var(--color-ink);
+  }
+  .btn-sm {
+    height: 27px;
+    padding: 0 9px;
+    font-size: 11.5px;
+    border-radius: 8px;
+  }
+  .icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+    border: 1px solid var(--color-line);
+    background: #fff;
+    color: var(--color-body);
+    transition: all 0.13s ease-out;
+  }
+  .icon-btn:hover {
+    color: var(--color-ink);
+    border-color: #d3d9e3;
+    background: #f7f9fc;
+  }
+  .icon-btn:disabled {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+  .icon-btn.active {
+    background: var(--color-wash);
+    border-color: #b9cdfb;
+    color: var(--color-brand);
+  }
+  .field {
+    height: 30px;
+    border: 1px solid var(--color-line);
+    border-radius: 8px;
+    background: #fff;
+    padding: 0 8px;
+    font-size: 12.5px;
+    color: var(--color-ink);
+    outline: none;
+    transition: border-color 0.13s, box-shadow 0.13s;
+  }
+  .field:focus {
+    border-color: var(--color-brand);
+    box-shadow: 0 0 0 3px rgba(29, 90, 230, 0.14);
+  }
+  select.field {
+    padding-right: 4px;
+  }
+  .seg {
+    display: inline-flex;
+    background: #eef1f6;
+    border: 1px solid var(--color-line);
+    border-radius: 9px;
+    padding: 2px;
+    gap: 2px;
+  }
+  .seg > button {
+    height: 26px;
+    padding: 0 10px;
+    border-radius: 7px;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--color-body);
+    transition: all 0.13s ease-out;
+  }
+  .seg > button:hover {
+    color: var(--color-ink);
+  }
+  .seg > button[data-on="true"] {
+    background: #fff;
+    color: var(--color-ink);
+    box-shadow: 0 1px 2px rgba(15, 27, 45, 0.12);
+  }
+  .panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--color-line2);
+  }
+  .tick {
+    background-image: repeating-linear-gradient(
+      to right,
+      #b9c1cf 0 1px,
+      transparent 1px 100%
+    );
+  }
+  .fade-in {
+    animation: fade 0.24s ease-out both;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Desktop-first: controls grow on large displays so the UI stays readable */
+@media (min-width: 1536px) {
+  body {
+    font-size: 14px;
+  }
+  .label {
+    font-size: 11.5px;
+  }
+  .btn {
+    height: 36px;
+    padding: 0 15px;
+    font-size: 13px;
+    border-radius: 10px;
+  }
+  .btn-sm {
+    height: 30px;
+    padding: 0 11px;
+    font-size: 12.5px;
+  }
+  .icon-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+  }
+  .field {
+    height: 34px;
+    font-size: 13px;
+  }
+  .seg > button {
+    height: 30px;
+    padding: 0 12px;
+    font-size: 12.5px;
+  }
+}
+
+@keyframes march {
+  to {
+    stroke-dashoffset: -12;
+  }
+}
+
+/* ---------- Print ---------- */
+#print-root {
+  display: none;
+}
+@media print {
+  @page {
+    margin: 0;
+    size: auto;
+  }
+  html,
+  body {
+    background: #fff !important;
+    overflow: visible !important;
+    height: auto !important;
+  }
+  #root {
+    display: none !important;
+  }
+  #print-root {
+    display: block !important;
+    position: static;
+    text-align: center;
+  }
+  #print-root img {
+    display: block;
+    margin: 0 auto;
+    page-break-inside: avoid;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
